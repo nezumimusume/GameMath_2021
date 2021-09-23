@@ -3,6 +3,8 @@
 #include "graphics/GraphicsEngine.h"
 #include "graphics/RenderingEngine.h"
 #include "sound/SoundEngine.h"
+#include<InitGUID.h>
+#include<dxgidebug.h>
 
 HWND			g_hWnd = NULL;				//ウィンドウハンドル。
 
@@ -73,7 +75,19 @@ void InitWindow(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, 
 	ShowWindow(g_hWnd, nCmdShow);
 
 }
+void ReportLiveObjects()
+{
+	IDXGIDebug* pDxgiDebug;
 
+	typedef HRESULT(__stdcall* fPtr)(const IID&, void**);
+	HMODULE hDll = GetModuleHandleW(L"dxgidebug.dll");
+	fPtr DXGIGetDebugInterface = (fPtr)GetProcAddress(hDll, "DXGIGetDebugInterface");
+
+	DXGIGetDebugInterface(__uuidof(IDXGIDebug), (void**)&pDxgiDebug);
+
+	// 出力。
+	pDxgiDebug->ReportLiveObjects(DXGI_DEBUG_D3D12, DXGI_DEBUG_RLO_DETAIL);
+}
 
 //ゲームの初期化。
 void InitGame(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow, const TCHAR* appName)
