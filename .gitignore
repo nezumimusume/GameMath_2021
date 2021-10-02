@@ -433,9 +433,5 @@ ASALocalRun/
 /GameTemplate/k2EngineLow/ExEngine/Photon/Demos/demo_basics/windows/vc16_debug_windows_mt_x64/demo_windows_basics_vc16.vcxproj.FileListAbsolute.txt
 /Sample/Sample_24/k2Engine
 /Sample/Sample_24/k2EngineLow
-/Sample/Sample_01_00/k2Engine
-/Sample/Sample_01_00/k2EngineLow
-/Sample/Sample_01_00/Game/Assets/shader
-/Sample/Sample_01_00/Game/Assets/modelData/preset
-/Sample/Sample_01_01/Game/Assets/shader
-/Sample/Sample_01_01/Game/Assets/modelData/preset
+/Sample/Sample_03_01/k2Engine
+/Sample/Sample_03_01/k2EngineLow
