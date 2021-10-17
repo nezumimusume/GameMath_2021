@@ -30,6 +30,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	}
 
 	// step-1 3D空間で星の座標を指定する。
+	starRender[0].SetPosition( -400.0f, 100.0f, -200.0f );
+	starRender[1].SetPosition( -200.0f, 200.0f,  200.0f );
+	starRender[2].SetPosition(    0.0f, 300.0f, -200.0f );
+	starRender[3].SetPosition(  200.0f, 200.0f,  200.0f );
+	starRender[4].SetPosition(  400.0f, 100.0f, -200.0f );
 
 	// ここからゲームループ。
 	while (DispatchWindowMessage())

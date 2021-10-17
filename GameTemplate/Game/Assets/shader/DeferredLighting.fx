@@ -127,6 +127,7 @@ float4 PSMainCore(PSInput In, uniform int isSoftShadow)
             specColor
         ) * ( 1.0f - shadow );
     }
+    
     // 続いてポイントライト
     // スクリーンの左上を(0,0)、右下を(1,1)とする座標系に変換する
     // ビューポート座標系に変換する

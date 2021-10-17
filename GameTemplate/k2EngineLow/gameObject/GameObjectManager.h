@@ -51,6 +51,7 @@ namespace nsK2EngineLow {
 			return m_instance;
 		}
 	public:
+		enum { GAME_OBJECT_PRIO_MAX = 255 };		//!<ゲームオブジェクトの優先度の最大値。
 		/// <summary>
 		/// 更新処理を実行
 		/// </summary>
@@ -176,9 +177,9 @@ namespace nsK2EngineLow {
 
 			}
 		}
-		enum { GAME_OBJECT_PRIO_MAX = 255 };		//!<ゲームオブジェクトの優先度の最大値。
+		
 		typedef std::list<IGameObject*>	 GameObjectList;
-		std::array<GameObjectList, GAME_OBJECT_PRIO_MAX>	m_gameObjectListArray;							//!<ゲームオブジェクトの優先度付きリスト。
+		std::array<GameObjectList, GAME_OBJECT_PRIO_MAX+1>	m_gameObjectListArray;							//!<ゲームオブジェクトの優先度付きリスト。
 		static GameObjectManager* m_instance;		//唯一のインスタンスのアドレスを記録する変数。
 		bool												m_isActive = true;
 	};
