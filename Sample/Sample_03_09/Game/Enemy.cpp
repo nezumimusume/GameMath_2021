@@ -1,0 +1,36 @@
+#include "stdafx.h"
+#include "Enemy.h"
+#include "Player.h"
+
+void Enemy::Init(Vector3 initPos)
+{
+	m_position = initPos;
+	m_rotation.SetRotationY(Math::PI);
+	// step-1 プレイヤーのインスタンスのアドレスを検索する。
+
+}
+bool Enemy::Start()
+{
+	m_modelRender.Init("Assets/modelData/enemy/enemy.tkm");
+	m_modelRender.SetRotation(m_rotation);
+	m_modelRender.SetPosition(m_position);
+	m_modelRender.SetScale({ 3.0f, 3.0f, 3.0f });
+	return true;
+}
+void Enemy::Update()
+{
+	// step-2 エネミーからプレイヤーに向かって伸びるベクトルを計算する。
+	
+	// step-3 エネミーからプレイヤーに向かって伸びるベクトルを表示する。
+
+	// step-4 プレイヤーとの距離を計算する。
+
+	// step-5 プレイヤーとの距離が200以下になったら、プレイヤーを発見したというメッセージを表示する。
+	
+	m_modelRender.SetPosition(m_position);
+	m_modelRender.Update();
+}
+void Enemy::Render(RenderContext& rc)
+{
+	m_modelRender.Draw(rc);
+}
