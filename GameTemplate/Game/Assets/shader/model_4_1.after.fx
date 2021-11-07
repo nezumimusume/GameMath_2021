@@ -79,6 +79,7 @@ float4 PSMain( SPSIn In) : SV_Target0
         lig += ligPower * light[ligNo].color;
     }
 
+    // ライトの反射光をそのまま返す。
     float4 finalColor;
     finalColor.xyz = albedoColor.xyz * lig;
     finalColor.w = 1.0f;
