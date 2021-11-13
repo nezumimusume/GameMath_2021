@@ -1,6 +1,8 @@
 #include "k2EngineLowPreCompile.h"
 #include "tkFile/TkmFile.h"
 
+extern nsK2EngineLow::Vector3 CalcNormal(nsK2EngineLow::Vector3 p0, nsK2EngineLow::Vector3 p1, nsK2EngineLow::Vector3 p2);
+
 namespace nsK2EngineLow {
 	//法線スムージング。
 	class NormalSmoothing {
@@ -34,10 +36,14 @@ namespace nsK2EngineLow {
 				auto& vert_2 = mesh.vertexBuffer[vertNo_2];
 
 				//法線を計算する。
+#ifdef SAMPLE_04_04
+				Vector3 normal = CalcNormal(vert_0.pos, vert_1.pos, vert_2.pos);
+#else
 				Vector3 v0tov1 = vert_1.pos - vert_0.pos;
 				Vector3 v0tov2 = vert_2.pos - vert_0.pos;
 				Vector3 normal = Cross(v0tov1, v0tov2);
 				normal.Normalize();
+#endif
 				SFace face;
 				face.normal = normal;
 				face.vertexNos.push_back(vertNo_0);
