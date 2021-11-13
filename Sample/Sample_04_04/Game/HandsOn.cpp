@@ -11,13 +11,13 @@ Vector3 CalcNormal(Vector3 p0, Vector3 p1, Vector3 p2)
 {
 	Vector3 normal;
 	// step-1 0番目の頂点から１番目の頂点に向かって伸びるベクトルv1を計算する。
-	Vector3 v1 = p1 - p0;
+
 	// step-2 0番目の頂点から２番目の頂点に向かって伸びるベクトルv2を計算する。
-	Vector3 v2 = p2 - p0;
+
 	// step-3 v1とv2に垂直なベクトルを求める。
-	normal = Cross(v1, v2);
+
 	// step-4 外積で求めたベクトルは単位ベクトルではないので、正規化する。
-	normal.Normalize();
+
 
 	return normal;
 }
