@@ -16,6 +16,9 @@
       <Filter>Other</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Background.cpp">
+      <Filter>Other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="system\system.h">
@@ -25,6 +28,9 @@
       <Filter>Other</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
+      <Filter>Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
       <Filter>Other</Filter>
     </ClInclude>
   </ItemGroup>
