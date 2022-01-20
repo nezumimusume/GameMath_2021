@@ -205,6 +205,10 @@ namespace nsK2EngineLow {
 				DirectX::XMMatrixScalingFromVector(scale)
 			);
 		}
+		void MakeScaling(float x, float y, float z)
+		{
+			MakeScaling({ x, y, z });
+		}
 		/// <summary>
 		/// “§‹•ÏŠ·s—ñ‚ğì¬B
 		/// </summary>
