@@ -25,7 +25,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
-		// step-1 コントローラーの入力でX軸法にへの拡大行列を作成して拡大させる。
+		// step-1 コントローラーの入力でX軸方向への拡大行列を作成して拡大させる。
 		
 		// step-2 コントローラーの入力でY軸方向への拡大行列を作成して拡大させる。
 

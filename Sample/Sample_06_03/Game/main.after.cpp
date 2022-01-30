@@ -70,28 +70,28 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 			v.z = vSrc.x * m[0][2] + vSrc.y * m[1][2] + v.z * m[2][2];
 		}
 
-		// step-3 コントローラーの入力でZ軸方向への拡大行列を作成して拡大させる。
-		if (g_pad[0]->IsPress(enButtonY)) {
-			float m[3][3];
-			// 1行目
-			m[0][0] = 1.0f;
-			m[0][1] = 0.0f;
-			m[0][2] = 0.0f;
-			// 2行目
-			m[1][0] = 0.0f;
-			m[1][1] = 1.0f;
-			m[1][2] = 0.0f;
-			// 3行目
-			m[2][0] = 0.0f;
-			m[2][1] = 0.0f;
-			m[2][2] = 1.02f; // 1.02倍する
+	// step-3 コントローラーの入力でZ軸方向への拡大行列を作成して拡大させる。
+	if (g_pad[0]->IsPress(enButtonY)) {
+		float m[3][3];
+		// 1行目
+		m[0][0] = 1.0f;
+		m[0][1] = 0.0f;
+		m[0][2] = 0.0f;
+		// 2行目
+		m[1][0] = 0.0f;
+		m[1][1] = 1.0f;
+		m[1][2] = 0.0f;
+		// 3行目
+		m[2][0] = 0.0f;
+		m[2][1] = 0.0f;
+		m[2][2] = 1.02f; // 1.02倍する
 
-			// ベクトルと行列の乗算を行う。
-			Vector3 vSrc = v;
-			v.x = vSrc.x * m[0][0] + vSrc.y * m[1][0] + v.z * m[2][0];
-			v.y = vSrc.x * m[0][1] + vSrc.y * m[1][1] + v.z * m[2][1];
-			v.z = vSrc.x * m[0][2] + vSrc.y * m[1][2] + v.z * m[2][2];
-		}
+		// ベクトルと行列の乗算を行う。
+		Vector3 vSrc = v;
+		v.x = vSrc.x * m[0][0] + vSrc.y * m[1][0] + v.z * m[2][0];
+		v.y = vSrc.x * m[0][1] + vSrc.y * m[1][1] + v.z * m[2][1];
+		v.z = vSrc.x * m[0][2] + vSrc.y * m[1][2] + v.z * m[2][2];
+	}
 		//  確認のためにベクトルを表示する。
 		g_k2Engine->DrawVector(
 			v,			// 表示したいベクトル。
