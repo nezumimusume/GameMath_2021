@@ -46,9 +46,47 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 			pos.x = vSrc.x * m[0][0] + vSrc.y * m[1][0] + vSrc.z * m[2][0] + vSrc.w * m[3][0];
 			pos.y = vSrc.x * m[0][1] + vSrc.y * m[1][1] + vSrc.z * m[2][1] + vSrc.w * m[3][1];
 			pos.z = vSrc.x * m[0][2] + vSrc.y * m[1][2] + vSrc.z * m[2][2] + vSrc.w * m[3][2];
-
 		}
 		
+		// step-3 コントローラーの入力でベクトルをY方向に2平行移動させる。
+		if (g_pad[0]->IsPress(enButtonB)) {
+			// X方向に+4移動する平行移動行列を作成する。
+			float m[4][4] = {
+				{ 1, 0, 0, 0 },		// 1行目
+				{ 0, 1, 0, 0 },		// 2行目
+				{ 0, 0, 1, 0 },		// 3行目
+				{ 0, 2, 0, 1 }		// 4行目
+			};
+
+			// ベクトルと行列の乗算を行う。
+			Vector4 vSrc = pos;
+			pos.x = vSrc.x * m[0][0] + vSrc.y * m[1][0] + vSrc.z * m[2][0] + vSrc.w * m[3][0];
+			pos.y = vSrc.x * m[0][1] + vSrc.y * m[1][1] + vSrc.z * m[2][1] + vSrc.w * m[3][1];
+			pos.z = vSrc.x * m[0][2] + vSrc.y * m[1][2] + vSrc.z * m[2][2] + vSrc.w * m[3][2];
+
+		}
+
+		// step-4 コントローラーの入力でベクトルをZ方向に2平行移動させる。
+		if (g_pad[0]->IsPress(enButtonX)) {
+			// X方向に+4移動する平行移動行列を作成する。
+			float m[4][4] = {
+				{ 1, 0, 0, 0 },		// 1行目
+				{ 0, 1, 0, 0 },		// 2行目
+				{ 0, 0, 1, 0 },		// 3行目
+				{ 0, 0, 2, 1 }		// 4行目
+			};
+
+			// ベクトルと行列の乗算を行う。
+			Vector4 vSrc = pos;
+			pos.x = vSrc.x * m[0][0] + vSrc.y * m[1][0] + vSrc.z * m[2][0] + vSrc.w * m[3][0];
+			pos.y = vSrc.x * m[0][1] + vSrc.y * m[1][1] + vSrc.z * m[2][1] + vSrc.w * m[3][1];
+			pos.z = vSrc.x * m[0][2] + vSrc.y * m[1][2] + vSrc.z * m[2][2] + vSrc.w * m[3][2];
+
+		}
+
+		// step-5 確認のためベクトルを表示する。
+		// ベクトルの座標を設定。
+		// 座標は３次元空間なので、３次元ベクトルに変換する。
 		Vector3 posTmp;
 		posTmp.x = pos.x;
 		posTmp.y = pos.y;
@@ -56,7 +94,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//  確認のためにベクトルを表示する。
 		g_k2Engine->DrawVector(
 			v,			// 表示したいベクトル。
-			posTmp			// 表示する座標。
+			posTmp		// 表示する座標。
 		);
 
 		K2Engine::GetInstance()->Execute();
