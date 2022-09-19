@@ -13,7 +13,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	g_camera3D->SetTarget(0.0f, 0.0f, 0.0f);
 
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
-
+	auto& sceneLit = g_sceneLight->GetSceneLight();
+	sceneLit.ambinetLight.Set(1.2f, 1.2f, 1.2f);
+	
 	// step-1 ModelRenderクラスのオブジェクトを５つ定義する。
 
 	// step-2 星のモデルをロードする。
