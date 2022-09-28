@@ -12,7 +12,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, TEXT("Game"));
 	g_camera3D->SetPosition(0.0f, 0.0f, -1000.0f);
 	g_camera3D->SetTarget(0.0f, 0.0f, 0.0f);
-
+	g_camera3D->SetUpdateProjMatrixFunc(Camera::EnUpdateProjMatrixFunc::enUpdateProjMatrixFunc_Ortho);
+	g_camera3D->SetWidth(1500.0f);
+	g_camera3D->SetHeight(1500.0f);
+	
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	// ライトを真上から設定。
 	g_sceneLight->SetDirectionLight(0, { 0.0f, -1.0f, 0.0f }, { 0.8f, 0.8f, 0.8f });
@@ -21,8 +24,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 	// step-1 ベクトルを定義する。
 
-	// ここからゲームループ。
 	while (DispatchWindowMessage())
+	// ここからゲームループ。
 	{
 		// step-2 ベクトルを表示する。
 	
